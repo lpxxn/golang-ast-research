@@ -9,8 +9,8 @@ import (
 func main() {
 	var src = []byte(`println("hello world")`)
 
-	var fset = token.NewFileSet()
-	var file = fset.AddFile("hello.go", fset.Base(), len(src))
+	var fSet = token.NewFileSet()
+	var file = fSet.AddFile("hello.go", fSet.Base(), len(src))
 
 	var s scanner.Scanner
 	s.Init(file, src, nil, scanner.ScanComments)
@@ -20,6 +20,6 @@ func main() {
 		if tok == token.EOF {
 			break
 		}
-		fmt.Printf("%s\t%s\t%q\n", fset.Position(pos), tok, lit)
+		fmt.Printf("%s\t%s\t%q\n", fSet.Position(pos), tok, lit)
 	}
 }
